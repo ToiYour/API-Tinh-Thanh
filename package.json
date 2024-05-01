@@ -1,0 +1,19 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "API Tỉnh Thành Việt Nam",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./server.js",
+    "dev": "nodemon ./server.js"
+  },
+  "author": "Nguyễn Huy Tới",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "json-serve": "^0.1.0",
+    "json-server": "^0.16.3",
+    "nodemon": "^3.1.0",
+    "path": "^0.12.7"
+  }
+}
