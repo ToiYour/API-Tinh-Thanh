@@ -11,7 +11,7 @@ const allowOnlyGetRequests = (req, res, next) => {
   next();
 };
 server.use(cors());
-server.use(jsonServer.bodyParser);
+server.use(jsonServer.bodyParser());
 server.use(middlewares);
 server.use(allowOnlyGetRequests);
 server.use(router);
