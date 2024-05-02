@@ -1,7 +1,14 @@
 import cors from "cors";
+import fs from "fs";
+import { fileURLToPath } from "url";
+import path from "path";
 import jsonServer from "json-server";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const server = jsonServer.create();
-const router = jsonServer.router("db.json");
+const dbPath = path.join(__dirname, "db.json");
+const db = JSON.parse(fs.readFileSync(dbPath));
+const router = jsonServer.router(db);
 const middlewares = jsonServer.defaults();
 // Middleware để chỉ cho phép yêu cầu GET
 const allowOnlyGetRequests = (req, res, next) => {
@@ -11,7 +18,7 @@ const allowOnlyGetRequests = (req, res, next) => {
   next();
 };
 server.use(cors());
-server.use(jsonServer.bodyParser());
+server.use(jsonServer.bodyParser);
 server.use(middlewares);
 server.use(allowOnlyGetRequests);
 server.use(router);
