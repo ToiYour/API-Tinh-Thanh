@@ -17,7 +17,12 @@ const allowOnlyGetRequests = (req, res, next) => {
   }
   next();
 };
-server.use(cors());
+server.use(cors(
+  {
+  origin: true,
+  credentials: true,
+}
+));
 server.use(jsonServer.bodyParser);
 server.use(middlewares);
 server.use(allowOnlyGetRequests);
